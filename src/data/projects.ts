@@ -165,5 +165,87 @@ export const projects: Project[] = [
       "Shopping list generator",
       "Nutritional information display"
     ]
+  },
+  {
+    id: "recipe-explorer",
+    title: "Recipe Explorer",
+    shortDescription: "Dynamic recipe browsing app with search, filters, and detailed cooking instructions",
+    fullDescription: "Recipe Explorer is a feature-rich recipe search application built using React and TailwindCSS, powered by the ThemealDB public meals API. Users can browse recipes, search by name, filter by categories or ingredients, and view complete cooking instructions with ingredient breakdowns and optional YouTube tutorials.",
+    techStack: ["React", "Tailwind CSS", "ThemealDB API", "Axios"],
+    tags: ["React", "API Integration", "Frontend"],
+    thumbnail: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80",
+    liveUrl: "https://reciepeappg.netlify.app",
+    githubUrl: "https://github.com/gauravrai80/reciepe_app",
+    features: [
+      "🔍 Recipe Search: Quickly find meals by name or keyword",
+      "🧭 Category & Ingredient Filters: Refine recipes based on categories or specific ingredients",
+      "📄 Detailed Recipe Pages with complete ingredient list and step-by-step instructions",
+      "Category tags and YouTube video tutorials (if available)",
+      "⭐ Favorites System using localStorage",
+      "📱 Responsive UI: Seamlessly adapts to mobile and desktop screens"
+    ],
+    challenges: "Implementing efficient API calls to ThemealDB and managing complex filtering logic across multiple parameters while maintaining smooth user experience.",
+    learnings: "Gained expertise in working with third-party APIs, learned advanced React patterns for state management, and mastered responsive design with TailwindCSS.",
+    codeSnippet: {
+      title: "Recipe API Integration",
+      code: `const fetchRecipesByCategory = async (category) => {
+  try {
+    const response = await axios.get(
+      \`https://www.themealdb.com/api/json/v1/1/filter.php?c=\${category}\`
+    );
+    if (response.data.meals) {
+      return response.data.meals;
+    }
+    return [];
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+    return [];
+  }
+};`,
+      language: "javascript"
+    }
+  },
+  {
+    id: "kanban-board",
+    title: "Kanban Board",
+    shortDescription: "Drag-and-drop task management application inspired by agile workflows",
+    fullDescription: "Kanban Board is a drag-and-drop task management application inspired by agile workflows. It lets users visually manage tasks across To Do, In Progress, and Done columns with a clean, responsive UI. The app uses React's Context API for global state management and localStorage to persist data across sessions.",
+    techStack: ["React", "TailwindCSS", "Context API", "react-beautiful-dnd", "localStorage"],
+    tags: ["React", "Task Management", "Frontend"],
+    thumbnail: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
+    liveUrl: "https://kanbanboardb.netlify.app",
+    githubUrl: "https://github.com/gauravrai80/kanban_board",
+    features: [
+      "🧩 Kanban Layout: Tasks organized into To Do, In Progress, and Done columns",
+      "➕ Create / Edit / Delete Tasks: Manage tasks through an intuitive form and inline actions",
+      "🔁 Drag and Drop: Move tasks between columns using react-beautiful-dnd with smooth interactions",
+      "💾 Persistent Data: All tasks are saved in localStorage so progress is not lost on refresh",
+      "📝 Task Details Modal: Click a task to view full details and edit fields like description or status",
+      "🧷 Optional tags, priorities, or deadlines for richer task context"
+    ],
+    challenges: "Implementing smooth drag-and-drop functionality across columns while maintaining data consistency and ensuring localStorage synchronization without performance issues.",
+    learnings: "Mastered React Context API for global state management, learned advanced patterns for drag-and-drop interactions with react-beautiful-dnd, and gained experience in building persistent client-side applications.",
+    codeSnippet: {
+      title: "Context API State Management",
+      code: `const TaskContext = createContext();
+
+export const TaskProvider = ({ children }) => {
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem('kanban-tasks');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('kanban-tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  return (
+    <TaskContext.Provider value={{ tasks, setTasks }}>
+      {children}
+    </TaskContext.Provider>
+  );
+};`,
+      language: "javascript"
+    }
   }
 ];
