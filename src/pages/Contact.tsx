@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Twitter, Send, Loader2 } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 
@@ -19,25 +19,25 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/gauravrai80",
       color: "hover:text-primary"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/gaurav-rai-3718aa255",
       color: "hover:text-primary"
     },
     {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
+      icon: Instagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/gaurav_rai8055/",
       color: "hover:text-primary"
     },
     {
       icon: Mail,
       label: "Email",
-      href: "mailto:hello@example.com",
+      href: "mailto:gauravrai241005@gmail.com",
       color: "hover:text-accent"
     }
   ];
@@ -111,7 +111,7 @@ const Contact = () => {
             Get In <span className="text-gradient">Touch</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? Feel free to reach out!
+            Have a project in mind or just want to chat? I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, feel free to reach out!
           </p>
         </div>
 

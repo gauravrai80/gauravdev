@@ -41,7 +41,7 @@ const Home = () => {
 
             {/* Bio */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Hi, I'm a passionate developer specializing in creating modern, responsive web applications.
+              Hi, I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, a passionate developer specializing in creating modern, responsive web applications.
               I transform ideas into elegant solutions using cutting-edge technologies.
             </p>
 

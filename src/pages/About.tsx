@@ -21,25 +21,60 @@ const About = () => {
 
   const timeline = [
     {
-      icon: Briefcase,
-      year: "2024 - Present",
-      title: "Senior Frontend Developer",
-      company: "Tech Company",
-      description: "Leading frontend development for enterprise applications, mentoring junior developers."
-    },
-    {
-      icon: Briefcase,
-      year: "2022 - 2024",
-      title: "Full Stack Developer",
-      company: "Startup Inc",
-      description: "Built and deployed multiple web applications using MERN stack."
+      icon: GraduationCap,
+      year: "2025",
+      title: "Bachelor of Science in Computer Science",
+      company: "IIMT Group of Colleges",
+      description: "Comprehensive education in computer science fundamentals, software development, and modern programming paradigms."
     },
     {
       icon: GraduationCap,
-      year: "2018 - 2022",
-      title: "Bachelor's in Computer Science",
-      company: "University Name",
-      description: "Focused on web development, algorithms, and software engineering."
+      year: "2020 - 2022",
+      title: "Intermediate & High School",
+      company: "Shaheed Bhagat Singh Inter College",
+      description: "Completed 10th (2020) and 12th (2022) with strong foundation in science and mathematics."
+    },
+    {
+      icon: GraduationCap,
+      year: "Currently Enrolled",
+      title: "IIT-M Pravartak Certified Full Stack Development with AI Tools",
+      company: "IIT Madras",
+      description: "Advanced full stack development program integrating AI tools and modern development practices."
+    },
+    {
+      icon: GraduationCap,
+      year: "July 2025",
+      title: "MEAN Stack Certification",
+      company: "GUVI (HCL)",
+      description: "Mastered MongoDB, Express.js, Angular, and Node.js for building full-stack JavaScript applications."
+    },
+    {
+      icon: GraduationCap,
+      year: "July 2025",
+      title: "JavaScript Certification",
+      company: "GUVI (HCL)",
+      description: "Advanced JavaScript programming covering ES6+, asynchronous programming, and modern frameworks."
+    },
+    {
+      icon: GraduationCap,
+      year: "June 2025",
+      title: "HTML & CSS Certification",
+      company: "GUVI (HCL)",
+      description: "Comprehensive web design and development using HTML5, CSS3, and responsive design principles."
+    },
+    {
+      icon: GraduationCap,
+      year: "2024",
+      title: "Python – MTA",
+      company: "Microsoft Technology Associate",
+      description: "Certified in Python programming fundamentals and application development."
+    },
+    {
+      icon: Briefcase,
+      year: "Aug 2025",
+      title: "TCS iON National Qualifier Test (NQT)",
+      company: "TCS - IT & Psychometric",
+      description: "Qualified in TCS National Qualifier Test for IT and Psychometric assessment."
     }
   ];
 
@@ -48,6 +83,18 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-16">
+          {/* Profile Photo */}
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50 animate-pulse" />
+              <img
+                src="/profile.png"
+                alt="Gaurav Rai"
+                className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-primary/20 shadow-2xl"
+              />
+            </div>
+          </div>
+
           <h1 className="text-4xl sm:text-5xl font-bold">
             About <span className="text-gradient">Me</span>
           </h1>
@@ -65,7 +112,7 @@ const About = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I'm a full-stack developer with a passion for building modern, responsive web applications that solve real-world problems.
+                I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, a full-stack developer with a passion for building modern, responsive web applications that solve real-world problems.
                 With expertise in the MERN stack and a keen eye for design, I bridge the gap between functionality and aesthetics.
               </p>
               <p>
