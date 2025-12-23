@@ -75,23 +75,75 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "chat-app",
-    title: "Real-Time Chat App",
-    shortDescription: "WebSocket-based chat with rooms and file sharing",
-    fullDescription: "A full-featured real-time chat application built with Socket.io. Supports private messaging, group chats, file sharing, typing indicators, and message history.",
-    techStack: ["React", "Socket.io", "Node.js", "MongoDB"],
-    tags: ["Full Stack", "Real-time", "WebSocket"],
+    id: "raichat",
+    title: "💬 RaiChat – Real-Time Chat Application",
+    shortDescription: "A full-featured, production-ready real-time chat application built using the MERN stack and Socket.IO",
+    fullDescription: "RaiChat is a scalable real-time messaging platform designed to demonstrate full-stack development skills using the MERN stack. It enables users to securely authenticate, chat in real time, create group conversations, share files, and see live typing and online status updates using Socket.IO. All wrapped in a modern glassmorphic UI.",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind CSS", "JWT", "Cloudinary", "bcryptjs", "Multer"],
+    tags: ["Full Stack", "Real-time", "MERN Stack"],
     thumbnail: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80",
-    liveUrl: "https://example-chat.com",
-    githubUrl: "https://github.com/username/chat-app",
+    liveUrl: "https://raichat.netlify.app",
+    githubUrl: "https://github.com/gauravrai80/raichat",
     features: [
-      "Real-time messaging with WebSocket",
-      "Private and group chat rooms",
-      "File and image sharing",
-      "Typing indicators",
-      "Message history persistence",
-      "User presence tracking"
-    ]
+      "🔐 User Authentication: JWT-based authentication with bcrypt password hashing",
+      "💬 Private Messaging: One-to-one real-time conversations",
+      "👥 Group Chats: Create and manage group conversations",
+      "⌨️ Typing Indicators: Live typing status using Socket.IO events",
+      "🟢 Online / Offline Status: Real-time presence tracking",
+      "📎 File Sharing: Upload and share images/documents via Cloudinary",
+      "💾 Message Persistence: Chat history stored securely in MongoDB",
+      "🎨 Modern UI: Glassmorphic design with Tailwind CSS",
+      "📱 Responsive Design: Optimized for desktop and mobile devices"
+    ],
+    challenges: "Implementing real-time bidirectional communication with Socket.IO while maintaining secure authentication flow, managing multiple concurrent connections, and ensuring message persistence across sessions. Handling file uploads efficiently with Cloudinary integration and optimizing the glassmorphic UI for performance.",
+    learnings: "Mastered Socket.IO for real-time bidirectional event-based communication, gained expertise in JWT authentication and authorization patterns, learned advanced MongoDB schema design for chat applications, and implemented production-ready deployment with environment-based configuration. Developed skills in building modular backend architecture with controllers, routes, and middleware.",
+    codeSnippet: {
+      title: "Socket.IO Real-Time Messaging",
+      code: `// Server-side Socket.IO event handling
+io.on('connection', (socket) => {
+  console.log('User connected:', socket.id);
+  
+  // Join user to their personal room
+  socket.on('join', (userId) => {
+    socket.join(userId);
+    // Update user online status
+    updateUserStatus(userId, true);
+    io.emit('user-status', { userId, online: true });
+  });
+  
+  // Handle private messages
+  socket.on('send-message', async (data) => {
+    const { senderId, receiverId, message, conversationId } = data;
+    
+    // Save message to database
+    const newMessage = await Message.create({
+      sender: senderId,
+      receiver: receiverId,
+      content: message,
+      conversation: conversationId,
+      timestamp: new Date()
+    });
+    
+    // Emit to receiver's room
+    io.to(receiverId).emit('receive-message', newMessage);
+  });
+  
+  // Handle typing indicators
+  socket.on('typing', (data) => {
+    socket.to(data.receiverId).emit('user-typing', {
+      userId: data.senderId,
+      isTyping: true
+    });
+  });
+  
+  // Handle disconnect
+  socket.on('disconnect', () => {
+    updateUserStatus(socket.userId, false);
+    io.emit('user-status', { userId: socket.userId, online: false });
+  });
+});`,
+      language: "javascript"
+    }
   },
   {
     id: "recipe-explorer",
