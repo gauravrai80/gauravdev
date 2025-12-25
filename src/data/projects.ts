@@ -57,22 +57,77 @@ export const projects: Project[] = [
 
   {
     id: "portfolio-builder",
-    title: "Portfolio Builder",
-    shortDescription: "No-code portfolio website generator with templates",
-    fullDescription: "A SaaS application that allows users to create professional portfolio websites without coding. Features drag-and-drop editor, multiple themes, custom domains, and analytics dashboard.",
-    techStack: ["React", "Node.js", "PostgreSQL", "AWS S3"],
-    tags: ["Full Stack", "SaaS", "React"],
+    title: "Folio - Portfolio Builder",
+    shortDescription: "A no-code portfolio builder that makes it easy to create stunning portfolios without writing code",
+    fullDescription: "Folio is a comprehensive no-code portfolio builder created entirely using Lovable, an AI-assisted development platform. This SaaS application empowers users to create professional portfolio websites without any coding knowledge. The platform features an intuitive drag-and-drop editor, professionally designed templates for different industries, responsive design, custom domain support, and built-in SEO optimization. Built with modern web technologies including React, TypeScript, Vite, and Supabase for backend services.",
+    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Supabase", "dnd-kit"],
+    tags: ["Full Stack", "SaaS", "No-Code", "AI-Assisted"],
     thumbnail: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
-    liveUrl: "https://example-builder.com",
-    githubUrl: "https://github.com/username/portfolio-builder",
+    liveUrl: "https://raifolio.lovable.app",
+    githubUrl: "https://github.com/Gaurav-rai18/craft-portfolio-b3c2c11f.git",
     features: [
-      "Drag-and-drop page builder",
-      "10+ professional templates",
-      "Custom domain integration",
-      "Built-in analytics",
-      "SEO optimization tools",
-      "Image hosting and optimization"
-    ]
+      "🎨 No-Code Editor: Intuitive drag-and-drop interface for building portfolios visually",
+      "📐 Professional Templates: Multiple pre-designed templates for different industries",
+      "📱 Responsive Design: All portfolios are mobile-friendly out of the box",
+      "🌐 Custom Domains: Connect your own domain to your portfolio",
+      "🔍 SEO Optimized: Built-in SEO settings for better discoverability",
+      "📊 Analytics Dashboard: Track visitors and engagement on your portfolio",
+      "🎭 Component Palette: Rich library of reusable components for customization",
+      "⚡ Live Preview: Real-time canvas preview while building",
+      "🤖 AI-Assisted Development: Built entirely using Lovable platform"
+    ],
+    challenges: "Creating an intuitive drag-and-drop editor that balances flexibility with ease of use, implementing a robust component system that works seamlessly across different templates, and ensuring the generated portfolios are performant and SEO-friendly. Managing complex state for the editor interface while maintaining smooth user experience.",
+    learnings: "Gained extensive experience with AI-assisted development using Lovable platform, mastered modern React patterns with TypeScript, learned advanced drag-and-drop implementations with dnd-kit, and developed expertise in Supabase for authentication and database management. Discovered how AI tools can accelerate development while maintaining full creative control over the final product.",
+    codeSnippet: {
+      title: "Drag-and-Drop Component System",
+      code: `// Component palette with drag-and-drop functionality
+import { useDraggable } from '@dnd-kit/core';
+
+const ComponentPalette = () => {
+  const components = [
+    { id: 'hero', name: 'Hero Section', icon: '🎯' },
+    { id: 'about', name: 'About', icon: '👤' },
+    { id: 'projects', name: 'Projects', icon: '💼' },
+    { id: 'contact', name: 'Contact', icon: '📧' }
+  ];
+
+  return (
+    <div className="component-palette">
+      {components.map(component => (
+        <DraggableComponent 
+          key={component.id} 
+          component={component} 
+        />
+      ))}
+    </div>
+  );
+};
+
+const DraggableComponent = ({ component }) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: component.id,
+    data: { type: component.id }
+  });
+
+  const style = transform ? {
+    transform: \`translate3d(\${transform.x}px, \${transform.y}px, 0)\`,
+  } : undefined;
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="draggable-component"
+    >
+      <span>{component.icon}</span>
+      <span>{component.name}</span>
+    </div>
+  );
+};`,
+      language: "typescript"
+    }
   },
   {
     id: "raichat",
