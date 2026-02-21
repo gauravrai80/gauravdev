@@ -20,24 +20,28 @@ const Contact = () => {
       icon: Github,
       label: "GitHub",
       href: "https://github.com/gauravrai80",
+      username: "@gauravrai80",
       color: "hover:text-primary"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/gaurav-rai-3718aa255",
+      username: "gaurav-rai-3718aa255",
       color: "hover:text-primary"
     },
     {
       icon: Instagram,
       label: "Instagram",
-      href: "https://www.instagram.com/gaurav_rai8055/",
+      href: "https://www.instagram.com/gauravraix/",
+      username: "@gauravraix",
       color: "hover:text-primary"
     },
     {
       icon: Mail,
       label: "Email",
-      href: "mailto:gauravrai241005@gmail.com",
+      href: "mailto:raig64189@gmail.com",
+      username: "raig64189@gmail.com",
       color: "hover:text-accent"
     }
   ];
@@ -213,7 +217,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-semibold">{social.label}</p>
-                    <p className="text-sm text-muted-foreground">@yourusername</p>
+                    <p className="text-sm text-muted-foreground">{social.username}</p>
                   </div>
                 </a>
               ))}
