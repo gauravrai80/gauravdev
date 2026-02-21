@@ -21,148 +21,115 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "raistore-ecommerce",
-    title: "RaiStore – Full-Stack E-Commerce Platform",
-    shortDescription: "Production-ready MERN stack e-commerce platform with Stripe payments, Redux state management, and comprehensive admin dashboard",
-    fullDescription: "RaiStore is a complete, production-ready full-stack e-commerce platform built with the MERN stack. This comprehensive application features secure user authentication, advanced product management, real-time shopping cart functionality, Stripe payment integration, order tracking, and a powerful admin dashboard. With 5,000+ lines of code, 20+ components, and 15+ API endpoints managing 37 products, RaiStore demonstrates enterprise-level architecture and best practices in modern web development.",
-    techStack: ["React", "Redux Toolkit", "Tailwind CSS", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Stripe API", "Render", "Netlify", "MongoDB Atlas"],
+    title: "RaiStore – Premium E-Commerce Platform",
+    shortDescription: "Production-ready MERN stack e-commerce platform with Stripe payments, Zustand state management, Brevo transactional emails, and a full admin dashboard",
+    fullDescription: "RaiStore is a curated premium e-commerce storefront built with the MERN stack. It features JWT authentication with HTTP-only cookies, a live product catalog with category filtering, a Zustand-powered persistent cart, Stripe payment processing, Brevo transactional emails (welcome, order confirmation, status updates), and a fully functional admin dashboard with KPI analytics, product/order/inventory/coupon management. The frontend uses Vite + React 18, TanStack Query for server state, Framer Motion for animations, shadcn/ui components, and Zod/React Hook Form for validation.",
+    techStack: ["React 18", "Vite", "Zustand", "TanStack Query", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Node.js", "Express", "MongoDB", "Mongoose", "JWT", "Stripe", "Brevo", "Netlify", "Render"],
     tags: ["Full Stack", "MERN Stack", "E-Commerce", "Payment Integration"],
     thumbnail: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    liveUrl: "https://raistore.netlify.app/products",
-    githubUrl: "https://github.com/gauravrai80/full_stack_ecom.git",
+    liveUrl: "https://raistorex.netlify.app",
+    githubUrl: "https://github.com/gauravrai80/raistore.git",
     features: [
-      "🔐 User Authentication: JWT-based secure authentication with bcrypt password hashing and protected routes",
-      "🛍️ Product Catalog: Browse 37+ products with advanced filtering, sorting, and search functionality",
-      "🛒 Shopping Cart: Real-time cart management with Redux state, quantity controls, and persistent storage",
-      "💳 Stripe Integration: Secure payment processing with Stripe API for seamless checkout experience",
-      "📦 Order Management: Complete order tracking system with order history and status updates",
-      "👤 User Dashboard: Personalized user profiles with order history and account management",
-      "🎛️ Admin Dashboard: Comprehensive admin panel for product, order, and user management",
-      "📊 Analytics: Admin analytics dashboard with sales metrics and performance insights",
-      "🔍 Advanced Search: Product search with real-time filtering by category, price range, and ratings",
-      "⭐ Product Reviews: User review system with ratings and feedback functionality",
-      "📱 Responsive Design: Fully responsive UI optimized for desktop, tablet, and mobile devices",
-      "🎨 Modern UI/UX: Clean interface built with Tailwind CSS and smooth animations",
-      "🔒 Security Features: Input validation, XSS protection, rate limiting, and secure headers",
-      "⚡ Performance Optimization: Code splitting, lazy loading, and optimized bundle sizes with Vite",
-      "🌐 RESTful API: Well-structured backend with 15+ endpoints following REST principles",
-      "💾 Data Persistence: MongoDB Atlas for reliable cloud database storage",
-      "🚀 Production Deployment: Frontend on Netlify, backend on Render with environment-based configs",
-      "🔄 State Management: Redux Toolkit with async thunks for efficient global state handling",
-      "🎯 Error Handling: Comprehensive error handling on both frontend and backend",
-      "📧 Email Notifications: Order confirmation and status update emails (planned enhancement)"
+      "🔐 JWT Auth: Secure email/password auth with bcrypt hashing and HTTP-only cookie token storage",
+      "🛍️ Live Product Catalog: Category tabs, search, and filtering across a live MongoDB product collection",
+      "🛒 Persistent Cart: Zustand-powered cart that survives page refresh via localStorage persistence",
+      "💳 Stripe Checkout: Secure payment processing with Stripe Payment Intents and server-side verification",
+      "📧 Brevo Transactional Emails: Auto-send welcome emails, order confirmations, and status update notifications",
+      "📦 Order History: Users can view all past orders with status tracking and line-item details",
+      "❤️ Wishlist: Save products for later — persisted to MongoDB per user",
+      "🎟️ Coupon Codes: Percentage or flat discount codes with expiry and usage limits at checkout",
+      "👤 User Profile: Edit display name, avatar, and personal details",
+      "🎞️ Framer Motion Animations: Smooth entrance animations on storefront and product pages",
+      "📊 Admin Dashboard: KPI cards (Revenue, Orders, Products, Users) + recent orders table",
+      "🗂️ Admin Products: Full CRUD — create, edit, delete products with image uploads",
+      "🔄 Admin Orders: View all orders and update statuses (pending → shipped → delivered)",
+      "📋 Admin Inventory: Stock levels, SKU tracking, and low-stock threshold alerts",
+      "🏷️ Admin Coupons: Create and manage discount codes from the admin panel",
+      "👥 Admin Users: View all registered users",
+      "🔒 Role-Based Access: Admin routes protected via JWT role check middleware",
+      "🛡️ Security: Helmet headers, express-rate-limit, input validation with Zod",
+      "📱 Fully Responsive: Mobile-first design optimized for all screen sizes",
+      "⚡ TanStack Query: Efficient server state caching, background refetching, and stale-while-revalidate"
     ],
     challenges: `**1. Secure Payment Processing with Stripe**
-Integrating Stripe payment gateway while ensuring PCI compliance and handling various payment scenarios including failed transactions, refunds, and webhook events. Solution: Implemented server-side payment intent creation with proper error handling and webhook verification for secure transaction processing.
+Implementing server-side Payment Intent creation and ensuring the order is only saved to MongoDB after payment confirmation — not before. Handled edge cases like failed payments and duplicate order creation on webhook retries cleanly.
 
-**2. Complex State Management**
-Managing global state across cart, user authentication, products, and orders while maintaining performance and avoiding prop drilling. Solution: Utilized Redux Toolkit with createSlice and createAsyncThunk for efficient state management with built-in loading states and error handling.
+**2. Brevo Email Integration**
+Migrated from Nodemailer (SMTP timeout issues) to Brevo's REST API via the @getbrevo/brevo SDK. All email sending is non-blocking so a Brevo failure never crashes the API response. The sender email must be verified in the Brevo dashboard.
 
-**3. CORS and Deployment Issues**
-Handling cross-origin requests between Netlify frontend and Render backend while managing environment variables across platforms. Solution: Configured proper CORS policies, implemented environment-based API URLs, and set up secure environment variable management on both platforms.
+**3. Zustand Persistent Cart**
+Keeping cart state in sync between Zustand (in-memory) and localStorage (persistence) while handling edge cases like items going out of stock or the user switching accounts mid-session.
 
-**4. MongoDB Authentication and Data Modeling**
-Designing efficient database schemas for products, users, orders, and cart items while maintaining data integrity and relationships. Solution: Created normalized MongoDB schemas with proper indexing, implemented Mongoose middleware for data validation, and used population for efficient relationship queries.`,
+**4. Admin Dashboard Authorization**
+Built a two-layer middleware system: auth.middleware.js verifies the JWT cookie, then admin.middleware.js checks role === 'admin'. All admin tab data (inventory, coupons, analytics) is fetched only if the role check passes.
+
+**5. CORS & Deployment**
+Coordinating cookie credentials between the Netlify frontend and the Render backend required careful CORS origin whitelisting and ensuring cookies are sent with credentials: true on every Axios request.`,
     learnings: `**Technical Skills Gained:**
-• Mastered Redux Toolkit patterns including createSlice, createAsyncThunk, and RTK Query for efficient state management
-• Gained expertise in Stripe API integration for secure payment processing and webhook handling
-• Learned advanced MongoDB schema design with Mongoose for complex e-commerce data relationships
-• Developed proficiency in JWT authentication flows with refresh tokens and protected route middleware
-• Mastered Vite build optimization techniques for production-ready React applications
+• Mastered Zustand for lightweight global state with built-in persistence middleware
+• Implemented TanStack Query v5 patterns — queryClient, useQuery, useMutation, invalidation strategies
+• Integrated Stripe Payment Intents with server-side confirmation and order-save-on-success flow
+• Learned Brevo REST API for transactional email delivery with template-like dynamic content
+• Built a full role-based auth system using JWT + HTTP-only cookies + Mongoose role field
 
-**Best Practices Implemented:**
-• Implemented clean architecture with separation of concerns (controllers, services, routes, models)
-• Applied security best practices including input sanitization, rate limiting, and secure HTTP headers
-• Utilized environment-based configuration for seamless development and production deployments
-• Implemented comprehensive error handling and user-friendly error messages across the stack
-• Followed RESTful API design principles with proper HTTP methods and status codes
+**Architecture Decisions:**
+• Chose Zustand over Redux for cart state — less boilerplate, same power for this use case
+• Used TanStack Query for all server data to avoid duplicating loading/error state in components
+• Separated admin middleware into its own file to keep auth.middleware.js reusable for non-admin routes
+• Non-blocking email sending pattern ensures email failures never degrade the purchase experience
 
 **Problem-Solving Experience:**
-• Debugged complex async state updates in Redux with proper action sequencing
-• Optimized MongoDB queries with aggregation pipelines for analytics dashboard
-• Resolved deployment issues with environment variables and CORS configurations
-• Implemented efficient cart synchronization between localStorage and database`,
+• Debugged race conditions in Stripe webhook vs. API response order-creation flows
+• Fixed CORS credential issues between Netlify and Render after deployment
+• Resolved Mongoose populate queries for order line items referencing product documents`,
     codeSnippet: {
-      title: "Redux Cart Slice with Async Thunks",
-      code: `import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+      title: "Zustand Cart Store with Persistence",
+      code: `import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-// Async thunk for adding item to cart
-export const addToCart = createAsyncThunk(
-  'cart/addToCart',
-  async ({ productId, quantity }, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post('/api/cart/add', {
-        productId,
-        quantity
-      });
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
+const useCartStore = create(
+  persist(
+    (set, get) => ({
+      items: [],
 
-// Async thunk for fetching cart
-export const fetchCart = createAsyncThunk(
-  'cart/fetchCart',
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get('/api/cart');
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
+      addItem: (product, quantity = 1) => {
+        const existing = get().items.find(i => i._id === product._id);
+        if (existing) {
+          set(state => ({
+            items: state.items.map(i =>
+              i._id === product._id
+                ? { ...i, quantity: i.quantity + quantity }
+                : i
+            )
+          }));
+        } else {
+          set(state => ({ items: [...state.items, { ...product, quantity }] }));
+        }
+      },
 
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: {
-    items: [],
-    totalAmount: 0,
-    loading: false,
-    error: null
-  },
-  reducers: {
-    clearCart: (state) => {
-      state.items = [];
-      state.totalAmount = 0;
-    },
-    updateQuantity: (state, action) => {
-      const { productId, quantity } = action.payload;
-      const item = state.items.find(item => item.productId === productId);
-      if (item) {
-        item.quantity = quantity;
-        state.totalAmount = state.items.reduce(
-          (total, item) => total + item.price * item.quantity, 0
+      removeItem: (id) =>
+        set(state => ({ items: state.items.filter(i => i._id !== id) })),
+
+      updateQuantity: (id, quantity) =>
+        set(state => ({
+          items: state.items.map(i =>
+            i._id === id ? { ...i, quantity } : i
+          )
+        })),
+
+      clearCart: () => set({ items: [] }),
+
+      get total() {
+        return get().items.reduce(
+          (sum, i) => sum + i.price * i.quantity, 0
         );
       }
-    }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(addToCart.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(addToCart.fulfilled, (state, action) => {
-        state.loading = false;
-        state.items = action.payload.items;
-        state.totalAmount = action.payload.totalAmount;
-      })
-      .addCase(addToCart.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload?.message || 'Failed to add item';
-      })
-      .addCase(fetchCart.fulfilled, (state, action) => {
-        state.items = action.payload.items;
-        state.totalAmount = action.payload.totalAmount;
-      });
-  }
-});
+    }),
+    { name: 'raistore-cart' }  // persisted to localStorage
+  )
+);
 
-export const { clearCart, updateQuantity } = cartSlice.actions;
-export default cartSlice.reducer;`,
+export default useCartStore;`,
       language: "typescript"
     }
   },
