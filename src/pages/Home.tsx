@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Database, Palette, Rocket } from "lucide-react";
+import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
+import  ElectricBorder from '../components/ElectricBorder'
 
 const Home = () => {
   const skills = [
@@ -18,13 +21,14 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 grid-pattern opacity-50" />
         <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full h-full flex flex-col md:flex-row items-center gap-4 md:gap-8 pt-12 pb-10 md:pb-10">
+          {/* Left Content */}
+          <div className="flex-1 text-left space-y-8 animate-fade-in z-20">
             {/* Badge */}
             <div className="inline-block">
               <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm text-primary font-medium">
@@ -40,13 +44,13 @@ const Home = () => {
             </h1>
 
             {/* Bio */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
               Hi, I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, a passionate developer specializing in creating modern, responsive web applications.
               I transform ideas into elegant solutions using cutting-edge technologies.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 justify-center pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <Link to="/projects">
                 <Button size="lg" className="gap-2 glow-primary">
                   View My Projects
@@ -60,6 +64,18 @@ const Home = () => {
               </Link>
             </div>
           </div>
+
+          {/* Right Content */}
+          <div className="flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[550px] animate-fade-in flex items-center justify-center -mr-8" style={{ animationDelay: '0.2s' }}>
+            <Spotlight
+              className="-top-40 left-0 md:left-60 md:-top-20"
+              fill="white"
+            />
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full scale-[1.2]"
+            />
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -70,8 +86,9 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* Skills Section */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-12 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
@@ -80,14 +97,20 @@ const Home = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {skills.map((skill, index) => (
-                <div
+                <ElectricBorder
                   key={skill.label}
-                  className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group animate-slide-up"
+                  color="#7df9ff"
+                  speed={1}
+                  chaos={0.12}
+                  borderRadius={12}
+                  className="bg-card rounded-xl hover:shadow-lg hover:shadow-primary/10 group animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <skill.icon className={`h-10 w-10 ${skill.color} mb-4 group-hover:scale-110 transition-transform`} />
-                  <h3 className="font-semibold text-lg">{skill.label}</h3>
-                </div>
+                  <div className="p-6 h-full w-full">
+                    <skill.icon className={`h-10 w-10 ${skill.color} mb-4 group-hover:scale-110 transition-transform relative z-10`} />
+                    <h3 className="font-semibold text-lg relative z-10">{skill.label}</h3>
+                  </div>
+                </ElectricBorder>
               ))}
             </div>
           </div>
