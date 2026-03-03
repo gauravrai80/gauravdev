@@ -1,4 +1,5 @@
 import { Code2, Database, Layers, Rocket, GraduationCap, Briefcase } from "lucide-react";
+import StarBorder from '@/components/ui/StarBorder';
 
 const About = () => {
   const skills = [
@@ -131,27 +132,31 @@ const About = () => {
             <h2 className="text-3xl font-bold">Skills & Technologies</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {skills.map((skillGroup) => (
-                <div
+                <StarBorder
                   key={skillGroup.category}
-                  className="bg-card border border-border rounded-xl p-6 space-y-4 hover:border-primary/50 transition-all duration-300"
+                  className="bg-card rounded-xl hover:bg-card/80 transition-all duration-300"
+                  color="hsl(180, 78%, 55%)"
+                  speed="5s"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <skillGroup.icon className="h-6 w-6 text-primary" />
+                  <div className="p-6 space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <skillGroup.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-semibold">{skillGroup.category}</h3>
                     </div>
-                    <h3 className="text-xl font-semibold">{skillGroup.category}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skillGroup.items.map((item) => (
+                        <span
+                          key={item}
+                          className="px-3 py-1 bg-secondary rounded-lg text-sm text-muted-foreground"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {skillGroup.items.map((item) => (
-                      <span
-                        key={item}
-                        className="px-3 py-1 bg-secondary rounded-lg text-sm text-muted-foreground"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                </StarBorder>
               ))}
             </div>
           </section>
@@ -183,24 +188,30 @@ const About = () => {
           </section>
 
           {/* Interests Section */}
-          <section className="bg-card border border-border rounded-xl p-8 space-y-6">
-            <h2 className="text-3xl font-bold">Areas of Interest</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                "Modern Frontend Frameworks",
-                "API Design & Development",
-                "Performance Optimization",
-                "UI/UX Design Principles",
-                "Cloud Architecture",
-                "Open Source Contribution"
-              ].map((interest) => (
-                <div key={interest} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
-                  <div className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-muted-foreground">{interest}</span>
-                </div>
-              ))}
-            </div>
-          </section>
+          <StarBorder
+            className="bg-card rounded-xl"
+            color="hsl(180, 78%, 55%)"
+            speed="5s"
+          >
+            <section className="p-8 space-y-6">
+              <h2 className="text-3xl font-bold">Areas of Interest</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  "Modern Frontend Frameworks",
+                  "API Design & Development",
+                  "Performance Optimization",
+                  "UI/UX Design Principles",
+                  "Cloud Architecture",
+                  "Open Source Contribution"
+                ].map((interest) => (
+                  <div key={interest} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
+                    <div className="h-2 w-2 rounded-full bg-primary" />
+                    <span className="text-muted-foreground">{interest}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </StarBorder>
         </div>
       </div>
     </div>

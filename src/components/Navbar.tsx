@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import GradientText from "@/components/ui/GradientText";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,14 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <Code2 className="h-6 w-6 text-primary transition-transform group-hover:rotate-180 duration-300" />
-            <span className="text-xl font-bold text-gradient">DevPortfolio</span>
+            <GradientText
+              colors={["#2CE8C5", "#E8A32C", "#2CE8C5"]}
+              animationSpeed={8}
+              showBorder={false}
+              className="text-xl font-bold"
+            >
+              DevPortfolio
+            </GradientText>
           </Link>
 
           {/* Desktop Navigation */}
@@ -32,9 +40,8 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.path) ? "text-primary" : "text-muted-foreground"
-                }`}
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"
+                  }`}
               >
                 {link.name}
                 {isActive(link.path) && (
@@ -64,9 +71,8 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(link.path) ? "text-primary" : "text-muted-foreground"
-                  }`}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"
+                    }`}
                 >
                   {link.name}
                 </Link>

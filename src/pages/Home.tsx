@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Database, Palette, Rocket } from "lucide-react";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
-import  ElectricBorder from '../components/ElectricBorder'
+import ElectricBorder from '../components/ElectricBorder'
+import StarBorder from '@/components/ui/StarBorder'
 
 const Home = () => {
   const skills = [
@@ -31,9 +32,11 @@ const Home = () => {
           <div className="flex-1 text-left space-y-8 animate-fade-in z-20">
             {/* Badge */}
             <div className="inline-block">
-              <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm text-primary font-medium">
-                Frontend Developer / Full Stack Engineer
-              </span>
+              <StarBorder className="rounded-full bg-primary/10" color="hsl(180, 78%, 55%)" speed="5s">
+                <span className="px-4 py-2 text-sm text-primary font-medium block">
+                  Frontend Developer / Full Stack Engineer
+                </span>
+              </StarBorder>
             </div>
 
             {/* Headline */}
@@ -130,12 +133,16 @@ const Home = () => {
 
             <div className="flex flex-wrap gap-4 justify-center pt-6">
               {techStack.map((tech) => (
-                <div
+                <StarBorder
                   key={tech}
-                  className="px-6 py-3 bg-card border border-border rounded-lg hover:border-primary hover:bg-primary/5 transition-all duration-300 font-mono text-sm"
+                  className="rounded-lg bg-card hover:bg-primary/5 transition-all duration-300"
+                  color="hsl(180, 78%, 55%)"
+                  speed="5s"
                 >
-                  {tech}
-                </div>
+                  <div className="px-6 py-3 font-mono text-sm">
+                    {tech}
+                  </div>
+                </StarBorder>
               ))}
             </div>
           </div>

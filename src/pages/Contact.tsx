@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, Instagram, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
+import StarBorder from '@/components/ui/StarBorder';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -205,32 +206,43 @@ const Contact = () => {
             {/* Social Links */}
             <div className="space-y-4">
               {socialLinks.map((social) => (
-                <a
+                <StarBorder
                   key={social.label}
+                  as="a"
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
+                  className="rounded-xl bg-card hover:bg-card/80 transition-all duration-300 group"
+                  color="hsl(180, 78%, 55%)"
+                  speed="5s"
                 >
-                  <div className="p-3 rounded-lg bg-secondary group-hover:bg-primary/20 transition-colors">
-                    <social.icon className={`h-6 w-6 text-muted-foreground ${social.color} transition-colors`} />
+                  <div className="flex items-center gap-4 p-4">
+                    <div className="p-3 rounded-lg bg-secondary group-hover:bg-primary/20 transition-colors">
+                      <social.icon className={`h-6 w-6 text-muted-foreground ${social.color} transition-colors`} />
+                    </div>
+                    <div>
+                      <p className="font-semibold">{social.label}</p>
+                      <p className="text-sm text-muted-foreground">{social.username}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold">{social.label}</p>
-                    <p className="text-sm text-muted-foreground">{social.username}</p>
-                  </div>
-                </a>
+                </StarBorder>
               ))}
             </div>
 
             {/* Additional Info */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-4">
-              <h3 className="font-semibold text-lg">Quick Response</h3>
-              <p className="text-sm text-muted-foreground">
-                I typically respond to messages within 24 hours. For urgent inquiries,
-                feel free to reach out directly via email or LinkedIn.
-              </p>
-            </div>
+            <StarBorder
+              className="bg-card rounded-xl"
+              color="hsl(180, 78%, 55%)"
+              speed="5s"
+            >
+              <div className="p-6 space-y-4">
+                <h3 className="font-semibold text-lg">Quick Response</h3>
+                <p className="text-sm text-muted-foreground">
+                  I typically respond to messages within 24 hours. For urgent inquiries,
+                  feel free to reach out directly via email or LinkedIn.
+                </p>
+              </div>
+            </StarBorder>
           </div>
         </div>
       </div>

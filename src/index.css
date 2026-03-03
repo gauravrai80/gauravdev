@@ -53,9 +53,11 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
   }
 
-  code, pre {
+  code,
+  pre {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 }
@@ -64,7 +66,7 @@ All colors MUST be HSL.
   .glow-primary {
     box-shadow: var(--glow-primary);
   }
-  
+
   .glow-accent {
     box-shadow: var(--glow-accent);
   }
@@ -74,7 +76,7 @@ All colors MUST be HSL.
   }
 
   .grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(to right, hsl(180 78% 55% / 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, hsl(180 78% 55% / 0.05) 1px, transparent 1px);
     background-size: 30px 30px;

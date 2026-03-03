@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { Project } from "@/data/projects";
+import StarBorder from '@/components/ui/StarBorder';
 
 interface ProjectCardProps {
   project: Project;
@@ -10,7 +11,11 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+    <StarBorder
+      className="bg-card rounded-xl overflow-hidden group hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+      color="hsl(180, 78%, 55%)"
+      speed="5s"
+    >
       {/* Thumbnail */}
       <div className="relative h-48 overflow-hidden">
         <img
@@ -55,7 +60,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
-          
+
           {project.liveUrl && (
             <Button
               variant="outline"
@@ -67,7 +72,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               </a>
             </Button>
           )}
-          
+
           {project.githubUrl && (
             <Button
               variant="outline"
@@ -81,7 +86,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           )}
         </div>
       </div>
-    </div>
+    </StarBorder>
   );
 };
 
