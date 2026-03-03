@@ -69,7 +69,7 @@ const Home = () => {
           </div>
 
           {/* Right Content */}
-          <div className="flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[550px] animate-fade-in flex items-center justify-center -mr-8" style={{ animationDelay: '0.2s' }}>
+          <div className="flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[550px] animate-fade-in flex items-center justify-center md:-mr-8 overflow-hidden" style={{ animationDelay: '0.2s' }}>
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="white"

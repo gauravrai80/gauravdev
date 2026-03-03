@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Instagram, Send, Loader2 } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, Send, Loader2, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 import StarBorder from '@/components/ui/StarBorder';
@@ -44,6 +44,13 @@ const Contact = () => {
       href: "mailto:raig64189@gmail.com",
       username: "raig64189@gmail.com",
       color: "hover:text-accent"
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      href: "https://wa.me/919555062240",
+      username: "+91 9555062240",
+      color: "hover:text-primary"
     }
   ];
 
