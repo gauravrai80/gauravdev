@@ -5,6 +5,7 @@ import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 import ElectricBorder from '../components/ElectricBorder'
 import StarBorder from '@/components/ui/StarBorder'
+import SEOHead from '@/components/SEOHead'
 
 const Home = () => {
   const skills = [
@@ -21,6 +22,12 @@ const Home = () => {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <SEOHead
+        title="Gaurav Rai | Software Engineer | MERN Stack Developer"
+        description="Portfolio of Gaurav Rai, a MERN stack developer building modern web applications and scalable software solutions. Full stack developer specializing in React, Node.js, MongoDB."
+        canonicalPath="/"
+        keywords="Gaurav Rai, Software Developer, MERN Stack Developer, Web Developer, Frontend Developer, Backend Developer, Full Stack Developer"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
@@ -34,13 +41,14 @@ const Home = () => {
             <div className="inline-block">
               <StarBorder className="rounded-full bg-primary/10" color="hsl(180, 78%, 55%)" speed="5s">
                 <span className="px-4 py-2 text-sm text-primary font-medium block">
-                  Frontend Developer / Full Stack Engineer
+                  Software Developer | Full Stack Engineer
                 </span>
               </StarBorder>
             </div>
 
             {/* Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <span className="sr-only">Gaurav Rai — Full Stack Developer & MERN Stack Engineer. </span>
               Building Digital
               <br />
               <span className="text-gradient">Experiences</span>
@@ -48,8 +56,8 @@ const Home = () => {
 
             {/* Bio */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Hi, I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, a passionate developer specializing in creating modern, responsive web applications.
-              I transform ideas into elegant solutions using cutting-edge technologies.
+              Hi, I'm <span className="text-foreground font-semibold">Gaurav Rai</span> — a Full Stack MERN Developer building scalable web applications and modern digital products.
+              I specialize in React, Node.js, MongoDB, and Express to create elegant software solutions.
             </p>
 
             {/* CTA Buttons */}
@@ -91,7 +99,7 @@ const Home = () => {
 
 
       {/* Skills Section */}
-      <section className="py-12 bg-secondary/30">
+      <section id="services" className="py-12 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">

@@ -30,7 +30,7 @@ const Navbar = () => {
               showBorder={false}
               className="text-xl font-bold"
             >
-              DevPortfolio
+              Gaurav Rai
             </GradientText>
           </Link>
 

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+import SEOHead from '@/components/SEOHead';
 
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,7 +24,7 @@ const Projects = () => {
   // Filter projects
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
-      const matchesSearch = 
+      const matchesSearch =
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.techStack.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -36,11 +37,17 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen py-20">
+      <SEOHead
+        title="Projects by Gaurav Rai — MERN Stack & React Web Apps"
+        description="Browse Gaurav Rai's web development projects built with React, Node.js, MongoDB, Express, and TypeScript."
+        canonicalPath="/projects"
+        keywords="Gaurav Rai projects, MERN stack projects, React web apps, Node.js projects, full stack developer portfolio"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold">
-            My <span className="text-gradient">Projects</span>
+            Projects by <span className="text-gradient">Gaurav Rai</span>
           </h1>
           <p className="text-lg text-muted-foreground">
             A collection of projects I've built to solve real-world problems

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Github, Code2 } from "lucide-react";
 import { projects } from "@/data/projects";
+import SEOHead from '@/components/SEOHead';
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -23,6 +24,13 @@ const ProjectDetails = () => {
 
   return (
     <div className="min-h-screen py-20">
+      <SEOHead
+        title={`${project.title} — Project by Gaurav Rai`}
+        description={project.shortDescription}
+        canonicalPath={`/projects/${project.id}`}
+        ogImage={project.thumbnail}
+        keywords={`${project.title}, Gaurav Rai, ${project.techStack.slice(0, 5).join(', ')}, web development project`}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Back Button */}
@@ -65,7 +73,8 @@ const ProjectDetails = () => {
           <div className="rounded-xl overflow-hidden border border-border">
             <img
               src={project.thumbnail}
-              alt={project.title}
+              alt={`${project.title} - Web Development Project by Gaurav Rai`}
+              loading="lazy"
               className="w-full h-80 object-cover"
             />
           </div>

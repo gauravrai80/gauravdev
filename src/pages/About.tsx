@@ -1,5 +1,6 @@
 import { Code2, Database, Layers, Rocket, GraduationCap, Briefcase } from "lucide-react";
 import StarBorder from '@/components/ui/StarBorder';
+import SEOHead from '@/components/SEOHead';
 
 const About = () => {
   const skills = [
@@ -81,6 +82,12 @@ const About = () => {
 
   return (
     <div className="min-h-screen py-20">
+      <SEOHead
+        title="About Gaurav Rai — Skills, Education & Certifications"
+        description="Learn about Gaurav Rai — full stack developer skilled in React, Node.js, MongoDB. Certified by IIT Madras, GUVI (HCL), and Microsoft."
+        canonicalPath="/about"
+        keywords="Gaurav Rai, about, full stack developer, MERN stack, React developer, Node.js, skills, education, certifications"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-16">
@@ -90,14 +97,15 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50 animate-pulse" />
               <img
                 src="/profile.png"
-                alt="Gaurav Rai"
+                alt="Gaurav Rai - Full Stack Developer & MERN Stack Engineer"
+                loading="lazy"
                 className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-primary/20 shadow-2xl"
               />
             </div>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold">
-            About <span className="text-gradient">Me</span>
+            About <span className="text-gradient">Gaurav Rai</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Passionate developer with a love for creating clean, efficient, and user-friendly web applications

@@ -6,6 +6,7 @@ import { Github, Linkedin, Mail, Instagram, Send, Loader2, MessageCircle } from 
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 import StarBorder from '@/components/ui/StarBorder';
+import SEOHead from '@/components/SEOHead';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -116,11 +117,17 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen py-20">
+      <SEOHead
+        title="Contact Gaurav Rai — Hire a Full Stack Developer"
+        description="Get in touch with Gaurav Rai for freelance work, collaboration, or full stack developer opportunities. Available for React & MERN projects."
+        canonicalPath="/contact"
+        keywords="contact Gaurav Rai, hire full stack developer, hire MERN developer, freelance web developer, React developer for hire"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold">
-            Get In <span className="text-gradient">Touch</span>
+            Contact <span className="text-gradient">Gaurav Rai</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or just want to chat? I'm <span className="text-foreground font-semibold">Gaurav Rai</span>, feel free to reach out!

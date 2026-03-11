@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} DevPortfolio. Built with React & Tailwind CSS.
+            © {new Date().getFullYear()} Gaurav Rai. Built with React & Tailwind CSS.
           </p>
         </div>
       </div>
